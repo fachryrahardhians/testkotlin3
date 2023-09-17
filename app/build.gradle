@@ -1,0 +1,69 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.testkotlin3'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.testkotlin3"
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    repositories {
+        maven {
+            url '/Users/fachryrs/Work/telkom/serina_sdk/build/host/outputs/repo'
+        }
+        maven {
+            url "https://storage.googleapis.com/download.flutter.io"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        profile {
+            initWith debug
+        }
+    }
+    compileOptions {
+        sourceCompatibility 11
+        targetCompatibility 11
+    }
+    kotlinOptions {
+        jvmTarget = 11
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    debugImplementation 'com.serina.bot.serina_sdk:flutter_debug:1.0'
+    profileImplementation 'com.serina.bot.serina_sdk:flutter_profile:1.0'
+    releaseImplementation 'com.serina.bot.serina_sdk:flutter_release:1.0'
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
